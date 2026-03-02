@@ -2,15 +2,15 @@
 
 Auto-discovery of endpoints for monitoring with the `nri-postgresql` plugin using the New Relic NerdGraph API to filter instances from the Infrastructure RDS integration.
 
-1. [Dynamic RDS Discovery & Capability Probing](#dynamic-rds-discovery--capability-probing)
-2. [Database Availability & Performance Monitoring](#database-availability--performance-monitoring)
-3. [Global Cloud Inventory & RDS Events](#global-cloud-inventory--rds-events)
-4. [APM Pixie for DB](#apm-pixie-for-db)
-5. [PostgreSQL and Valkey Transparent Proxy](#postgresql-and-valkey-transparent-proxy)
+- [Dynamic RDS Discovery & Capability Probing](#dynamic-rds-discovery-capability-probing)
+- [Database Availability & Performance Monitoring](#database-availability-performance-monitoring)
+- [Global Cloud Inventory & RDS Events](#global-cloud-inventory-rds-events)
+- [APM Pixie for DB](#apm-pixie-for-db)
+- [PostgreSQL and Valkey Transparent Proxy](#postgresql-and-valkey-transparent-proxy)
 
 ---
 
-## 1. Dynamic RDS Discovery & Capability Probing
+## Dynamic RDS Discovery & Capability Probing
 
 ### Background
 The New Relic Infrastructure Agent manages off-host integrations through a modular system supporting variable replacement and dynamic `register_config` actions. Currently, `nri-postgresql` requires manual configuration for each database host.
@@ -29,7 +29,7 @@ Create a lightweight discovery integration, `nri-rds-discovery`, to automate the
 
 ---
 
-## 2. Database Availability & Performance Monitoring
+## Database Availability & Performance Monitoring
 
 ### Proposal
 Enhance `nri-postgresql` to provide deep, built-in availability and performance metrics during every collection cycle, eliminating the need for external heartbeat services.
@@ -46,7 +46,7 @@ Enhance `nri-postgresql` to provide deep, built-in availability and performance 
 
 ---
 
-## 3. Global Cloud Inventory & RDS Events
+## Global Cloud Inventory & RDS Events
 
 ### Background
 Customers with many accounts struggle with "account drift" (unmonitored databases) and missing lifecycle context (reboots, maintenance, failovers) that impacts database performance.
@@ -62,7 +62,7 @@ Deploy a singleton remote integration, `nri-cloud-inventory`, to provide a globa
 
 ---
 
-## 4. APM Pixie for DB
+## APM Pixie for DB
 
 ### Proposal
 Leverage Pixie on Kubernetes to auto-configure application-side database monitoring, providing observability from the perspective of the application client.
@@ -73,7 +73,7 @@ Leverage Pixie on Kubernetes to auto-configure application-side database monitor
 
 ---
 
-## 5. PostgreSQL and Valkey Transparent Proxy
+## PostgreSQL and Valkey Transparent Proxy
 
 ### Proposal
 Implement or integrate an observability-focused proxy layer (using HAProxy, ProxySQL, Envoy, or a custom Go-based solution) to gain centralized control and visibility over all database traffic.
