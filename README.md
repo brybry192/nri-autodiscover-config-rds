@@ -135,3 +135,25 @@ Rather than forcing the local host-agent to do global discovery, we propose a ne
 3. **[ ] Implement Config Protocol Output:** Ensure the tool can output the `register_config` JSON payload required by the Infrastructure Agent.
 4. **[ ] Availability POC:** Update `nri-postgresql` connection logic to track DNS lookup and query execution times.
 5. **[ ] End-to-End Validation:** Verify that the agent successfully spawns `nri-postgresql` workers based on the discovery output.
+
+
+## APM Pixie for DB
+Explore auto-configuring APM on K8s with Pixie for application-side database monitoring.
+- Parse and fingerprint SQL queries to map databases, tables, users, and operation types (INSERT, UPDATE, DELETE).
+- Capture query parameters and automatically generate Explain Plans.
+
+## PostgreSQL and Valkey Transparent Proxy
+Explore using open-source solutions (HAProxy, ProxySQL, Envoy) or developing an in-house Go-based proxy to enable query-level observability via New Relic APM/Insights.
+
+**Key Use Cases & Benefits:**
+- **Performance Testing & Workload Simulation:** Use AWS Aurora snapshots combined with Kafka to record and replay production workloads. The proxy layer captures live operations, streams them to Kafka, and then consumes that stream to run realistic performance tests against isolated database copies.
+- **Observability:** Centralized query monitoring and fingerprinting to map databases, tables, and operation types.
+- **Reliability:** Connection pooling to reduce server load, automatic retries, and graceful handling of failover/DNS caching issues.
+- **Migration & Upgrades:** Support for major version upgrades and significant architectural changes via traffic mirroring, dual-writing, and live data synchronization.
+- **Platform-Level Validation (Opt-in):** A centralized, opt-in service for teams to validate new database versions against real production traffic on hidden, disposable backends. This removes the burden on individual teams to build custom validation logic for upgrades, allowing for "throw-away" testing before true promotion.
+- **Deployment Flexibility:** Localized proxy endpoints within K8s clusters to abstract backend infrastructure and enable cross-cloud/cluster mobility.
+- **Traffic Control:** Centralized query management (e.g., query killing/timeouts) and queuing to buffer brief backlogs or error events.
+
+
+
+
